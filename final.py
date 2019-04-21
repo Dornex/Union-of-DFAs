@@ -1,6 +1,4 @@
 import queue
-from typing import FrozenSet, Any
-
 
 def lnfa_to_dfa(start_state, graf):
     coada = queue.Queue()
@@ -92,7 +90,7 @@ for i in range(numar_tranzitii_1):
     tranzitie_1 = input.readline().split()
     delta1[(tranzitie_1[0], tranzitie_1[1])] = tranzitie_1[2]
 
-########################################################################
+    ########################################################################
 
 numar_stari_2 = int(input.readline().split()[0])
 stari_2 = set(input.readline().split())
@@ -110,7 +108,7 @@ numar_tranzitii_2 = int(input.readline().split()[0])
 for i in range(numar_tranzitii_2):
     tranzitie_2 = input.readline().split()
     delta2[(tranzitie_2[0], tranzitie_2[1])] = tranzitie_2[2]
-########################################################################
+    ########################################################################
 
 delta1redem = {}
 delta2redem = {}
@@ -120,7 +118,6 @@ cnt = 1
 for stare in stari_1:
     delta1redem[stare] = cnt
     cnt+=1
-
 
 for stare in stari_2:
     delta2redem[stare] = cnt
@@ -137,7 +134,7 @@ for (nod, litera) in delta1.keys():
 for (nod, litera) in delta2.keys():
     graf[(delta2redem[nod], litera)] = delta2redem[delta2[(nod, litera)]]
 
-##########################################################################
+    ##########################################################################
 
 for (nod, litera) in delta1.keys():
     if stare_initiala_1 == nod:
@@ -153,7 +150,7 @@ graf[(stare_noua, '.')] = set(str(delta1redem[stare_initiala_1]))
 graf[(stare_noua, '.')].add(str(delta2redem[stare_initiala_2]))
 
 print(graf)
-#########################################################################
+    #########################################################################
 
 start_state = set()
 start_state.add(stare_noua)
